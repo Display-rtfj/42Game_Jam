@@ -5,17 +5,17 @@ using UnityEngine;
 public class BaseEnemy : MonoBehaviour
 {
     public EnemyData data;
-    public GameObject target;
+    private GameObject target;
 
-    // Start is called before the first frame update
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player");
         var renderer = GetComponent<SpriteRenderer>();
         renderer.sprite = data.sprite;
         renderer.color = data.color;
+
     }
 
-    // Update is called once per frame
     void Update()
     {
         Movimenent();
