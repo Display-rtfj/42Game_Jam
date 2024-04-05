@@ -10,5 +10,6 @@ public class EnemyData : ScriptableObject
     public Sprite sprite;
     public Color color;
     public int level;
+    public float speed;
 
 }

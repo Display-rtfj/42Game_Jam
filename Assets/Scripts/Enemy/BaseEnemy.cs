@@ -5,6 +5,7 @@ using UnityEngine;
 public class BaseEnemy : MonoBehaviour
 {
     public EnemyData data;
+    public GameObject target;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,15 @@ public class BaseEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Movimenent();
+    }
+
+    private void Movimenent()
+    {
+        if (target != null)
+        {
+            var direction = target.transform.position - transform.position;
+            transform.position += direction.normalized * data.speed * Time.deltaTime;
+        }
     }
 }
