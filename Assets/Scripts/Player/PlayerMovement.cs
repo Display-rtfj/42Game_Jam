@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        // addChildrenOrbit();
+        addChildrenOrbit();
     }
 
     void addChildrenOrbit() {
@@ -49,5 +49,6 @@ public class PlayerMovement : MonoBehaviour
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, speed * Time.deltaTime);
         }
+        Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
     }
 }
