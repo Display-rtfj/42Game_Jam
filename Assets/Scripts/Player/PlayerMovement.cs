@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        addChildrenOrbit();
+        // addChildrenOrbit();
     }
 
     void addChildrenOrbit() {
