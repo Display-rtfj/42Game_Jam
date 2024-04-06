@@ -5,9 +5,9 @@ using UnityEngine;
 public class Map_Script : MonoBehaviour
 {
 
-    public GameObject circle;
-    public int count = 10;
-    
+    public GameObject background;
+    public List<GameObject> objects;
+
     void Start()
     {
         
@@ -19,25 +19,26 @@ public class Map_Script : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             spawnObjects();
-            count = 10;
         }
     }
 
     void spawnObjects()
     {
-        Vector3 size = transform.localScale;
+        Vector3 size = background.transform.localScale;
         float width = size.x - 0.5f;
         float height = size.y - 0.5f;
-        while (count > 0)
+        int count = objects.Count - 1;
+        while (count >= 0)
         {
+            var circle = objects[count];
             float x = Random.Range(-width / 2 + circle.transform.localScale.x / 2, width / 2 - circle.transform.localScale.x / 2);
             float y = Random.Range(-height / 2 + circle.transform.localScale.y / 2, height / 2 - circle.transform.localScale.y / 2);
             Vector3 position = new Vector3(x, y, 1);
-            Collider2D collider = Physics2D.OverlapCircle(position, circle.transform.localScale.x / 2);
-            if (collider == null)
+            Collider2D colliderX = Physics2D.OverlapCircle(position, circle.transform.localScale.x / 2);
+            Collider2D colliderY = Physics2D.OverlapCircle(position, circle.transform.localScale.y / 2);
+            if (colliderX == null && colliderY == null)
             {
-                GameObject newCircle = Instantiate(circle, position, Quaternion.identity, transform);
-                newCircle.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+                Instantiate(circle, position, Quaternion.identity, transform);
                 count--;
             }
         }
