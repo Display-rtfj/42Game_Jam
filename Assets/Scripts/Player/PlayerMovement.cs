@@ -7,14 +7,29 @@ public class PlayerMovement : MonoBehaviour
     public float    speed = 5.0f;
     public float    xInput;
     public float    yInput;
+    public float    orbitRadius = 1;
+    public float    orbitSpeed = 50f;
 
     void Start()
     {
-        Vector3 bottomLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane));
-        Vector3 topRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.nearClipPlane));
+        addChildrenOrbit();
+    }
 
-        Debug.Log("Bottom Left: " + bottomLeft);
-        Debug.Log("Top Right: " + topRight);
+    void addChildrenOrbit() {
+        int numberOfChildren = transform.childCount;
+        for (int i = 0; i < numberOfChildren; i++)
+        {
+            Transform child = transform.GetChild(i);
+            // child.gameObject.AddComponent<RayToMouse>();
+            // child.gameObject.AddComponent<LineRenderer>();
+            child.gameObject.AddComponent<CircleCollider2D>();
+            OrbitMovement orbitScript = child.gameObject.AddComponent<OrbitMovement>();
+
+            orbitScript.orbitRadius = this.orbitRadius;
+            orbitScript.orbitSpeed = this.orbitSpeed;
+            orbitScript.initialAngleDegrees = (360f / numberOfChildren) * i;
+        }
+
     }
 
     public void Update()
