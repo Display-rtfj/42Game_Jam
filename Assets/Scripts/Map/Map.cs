@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Map_Script : MonoBehaviour
 {
 
-    public GameObject background;
+    // public GameObject background;
+    public Tilemap tilemap;
     public List<GameObject> objects;
 
     void Start()
     {
-        
+        spawnObjects();
     }
 
     // Update is called once per frame
@@ -18,15 +20,14 @@ public class Map_Script : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            spawnObjects();
         }
     }
 
     void spawnObjects()
     {
-        Vector3 size = background.transform.localScale;
-        float width = size.x - 0.5f;
-        float height = size.y - 0.5f;
+        Vector3Int size = tilemap.size;
+        float width = size.x;
+        float height = size.y;
         int count = objects.Count - 1;
         while (count >= 0)
         {
