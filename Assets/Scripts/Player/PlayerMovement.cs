@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float    yInput;
     public float    orbitRadius = 1;
     public float    orbitSpeed = 50f;
+    public GameObject      Light;
 
     void Start()
     {
@@ -34,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Update()
     {
+        if (Input.GetMouseButtonDown(0) && Light)
+            Instantiate(Light, transform.position, Quaternion.identity);
         xInput = Input.GetAxis("Horizontal");
         yInput = Input.GetAxis("Vertical");
 
@@ -45,8 +48,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, speed * Time.deltaTime);
-            Vector3 cameraPosition = new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z);
-            Camera.main.transform.position = cameraPosition;
         }
     }
 }
