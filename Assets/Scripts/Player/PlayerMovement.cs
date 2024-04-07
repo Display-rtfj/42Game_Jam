@@ -25,8 +25,14 @@ public class PlayerMovement : MonoBehaviour, IAcion
 
     public GameObject Ilumination;
 
+    public AudioClip audioClip;
+    private AudioSource audioSource;
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = audioClip;
+        audioSource.volume = 0.15f;
         // addChildrenOrbit();
         GameMenu.life += (value) =>
         {
@@ -82,6 +88,7 @@ public class PlayerMovement : MonoBehaviour, IAcion
         if (!power)
             return;
         GameObject  gameObject = Instantiate(power, transform.position, Quaternion.identity);
+        audioSource.PlayOneShot(audioClip);
         attack a = gameObject.GetComponent<attack>();
         if (a)
         {
