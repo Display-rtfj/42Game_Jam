@@ -16,6 +16,7 @@ public class GameMenu : MonoBehaviour
     public TextMeshProUGUI textDeads;
     public TextMeshProUGUI textScore;
     public TextMeshProUGUI textLife;
+    public GameObject menu;
 
     private int value_deads = 0;
     private int value_life = 0;
