@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseEnemy : MonoBehaviour
+public class BaseEnemy : MonoBehaviour, IAcion
 {
     public EnemyData data;
     private GameObject target;
@@ -28,5 +26,27 @@ public class BaseEnemy : MonoBehaviour
             var direction = target.transform.position - transform.position;
             transform.position += direction.normalized * data.speed * Time.deltaTime;
         }
+    }
+
+    public void Action(Color color, GameObject target)
+    {
+        GameMenu.deads(1);
+        GameMenu.score(10);
+        Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+
+    }
+
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
+            other.gameObject.GetComponent<IAcion>()?.Action(Color.black, this.gameObject);
+    }
+
+    public void SetColor(Color color)
+    {
     }
 }

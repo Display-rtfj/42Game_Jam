@@ -116,7 +116,8 @@ public class background : MonoBehaviour
     {
         float timer = 0.0f;
         float startRadius = light2DComponent.pointLightOuterRadius > 30 ? 30 : light2DComponent.pointLightOuterRadius;
-
+        if (startRadius <= 0)
+            GameMenu.gameOver.Invoke();
         while (timer < duration)
         {
             timer += Time.deltaTime;
