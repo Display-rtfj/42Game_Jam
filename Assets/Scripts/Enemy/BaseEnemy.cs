@@ -28,7 +28,7 @@ public class BaseEnemy : MonoBehaviour, IAcion
         }
     }
 
-    public void Action(Color color)
+    public void Action(Color color, GameObject target)
     {
         GameMenu.deads(1);
         GameMenu.score(10);
@@ -43,7 +43,10 @@ public class BaseEnemy : MonoBehaviour, IAcion
     private void OnCollisionStay2D(Collision2D other)
     {
         if (other.gameObject.tag == "Player")
-            other.gameObject.GetComponent<IAcion>()?.Action(Color.black);
+            other.gameObject.GetComponent<IAcion>()?.Action(Color.black, this.gameObject);
     }
 
+    public void SetColor(Color color)
+    {
+    }
 }

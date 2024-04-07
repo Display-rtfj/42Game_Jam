@@ -9,6 +9,7 @@ public class attack : MonoBehaviour
     public float            speed = 20f;
     private Color            color;
     private Vector3         direction;
+    public GameObject      parent;
 
 
     void Start()
@@ -48,7 +49,7 @@ public class attack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        other.GetComponent<IAcion>()?.Action(color);
+        other.GetComponent<IAcion>()?.Action(color, parent);
         Destroy(this.gameObject);
     }
 

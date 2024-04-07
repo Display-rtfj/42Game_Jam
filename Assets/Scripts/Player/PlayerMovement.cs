@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Rendering.Universal;
 
 public interface IAcion
 {
-    void Action(Color color);
+    void Action(Color color, GameObject target);
+    void SetColor(Color color);
 }
 
 public class PlayerMovement : MonoBehaviour, IAcion
@@ -16,10 +17,11 @@ public class PlayerMovement : MonoBehaviour, IAcion
     public float    orbitRadius = 1;
     public float    orbitSpeed = 50f;
     public GameObject      power;
-    private int colorSelect = 0;
+    public Color colorPower;
     public List<Color> colors;
     public int life = 1000;
     public int lifeMax = 1000;
+    public Light2D lightHeader; 
 
     public GameObject Ilumination;
 
@@ -32,6 +34,7 @@ public class PlayerMovement : MonoBehaviour, IAcion
         };
         GameMenu.setLife(life);
         GameMenu.lifeMax(lifeMax);
+        SetColor(colorPower);
     }
 
     void addChildrenOrbit() {
@@ -62,20 +65,15 @@ public class PlayerMovement : MonoBehaviour, IAcion
 
         movementDirection.Normalize();
         transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
-        // if (movementDirection != Vector3.zero)
-        // {
-        //     // Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-        //     // transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, speed * Time.deltaTime);
-        // }
         Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
         Ilumination.transform.position = transform.position;
 
-        if (Input.GetKeyDown(KeyCode.E))
+        /*if (Input.GetKeyDown(KeyCode.E))
         {
             colorSelect++;
             if (colorSelect >= colors.Count)
                 colorSelect = 0;
-        }
+        }*/
     }
 
 
@@ -84,12 +82,24 @@ public class PlayerMovement : MonoBehaviour, IAcion
         if (!power)
             return;
         GameObject  gameObject = Instantiate(power, transform.position, Quaternion.identity);
-        gameObject.GetComponent<attack>()?.SetColor(colors[colorSelect]);
+        attack a = gameObject.GetComponent<attack>();
+        if (a)
+        {
+            a.SetColor(colorPower);
+            a.parent = this.gameObject;
+        }
+    
     }
 
-    public void Action(Color color)
+    public void Action(Color color, GameObject target)
     {
         if (color == Color.black)
             GameMenu.life(-1);
+    }
+
+    public void SetColor(Color color)
+    {
+        colorPower = color;
+        lightHeader.color = color;
     }
 }

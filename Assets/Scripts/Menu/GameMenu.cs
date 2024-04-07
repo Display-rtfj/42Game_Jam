@@ -16,7 +16,10 @@ public class GameMenu : MonoBehaviour
     public TextMeshProUGUI textDeads;
     public TextMeshProUGUI textScore;
     public TextMeshProUGUI textLife;
-    public GameObject menu;
+    public GameObject menuPause;
+    public GameObject menuGameOver;
+
+    public UnityEngine.UI.Image lifeFill;
 
     private int value_deads = 0;
     private int value_life = 0;
@@ -30,18 +33,24 @@ public class GameMenu : MonoBehaviour
         life += SetLife;
         lifeMax += SetLifeMax;
         score += SetScore;
-        deads.Invoke(0);
-        life.Invoke(0);
         setLife += (value) =>
         {
             value_life = value;
         };
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape) && menuGameOver.active == false)
+        {
+            menuPause.SetActive(!menuPause.active);
+            if (menuPause.active)
+                Time.timeScale = 0f;
+            else
+                Time.timeScale = 1f;
+        }
     }
 
     void SetScore(int value)
@@ -59,13 +68,24 @@ public class GameMenu : MonoBehaviour
     void SetLife(int value)
     {
         value_life += value;
+        if (value_life <= 0)
+        {
+            value_life = 0;
+            Time.timeScale = 0f;
+            menuPause.SetActive(false);
+            menuGameOver.SetActive(true);
+        }
         textLife.text = value_life.ToString() + " / " + value_life_max.ToString();
+        lifeFill.fillAmount = (float)value_life / (float)value_life_max;
     }
 
     void SetLifeMax(int value)
     {
         value_life_max += value;
         textLife.text = value_life.ToString() + " / " + value_life_max.ToString();
+        lifeFill.fillAmount = (float)value_life / (float)value_life_max;
     }
+
+
 
 }

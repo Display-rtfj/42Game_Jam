@@ -50,15 +50,15 @@ public class Totem : MonoBehaviour, IAcion
     }
 
 
-    public void Action(Color color)
+    public void Action(Color color, GameObject target)
     {
-        Debug.Log(color);
-        if (!light2D.enabled && this.color == color)
+        if (!light2D.enabled)
         {
             tokenAcive.Invoke();
             border.SetActive(true);
-            light2D.color = color;
+            light2D.color = this.color;
             light2D.enabled = true;
+            target.GetComponent<IAcion>()?.SetColor(this.color);
         }
     }
 }
