@@ -104,4 +104,14 @@ public class GameMenu : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
+    private void OnDestroy()
+    {
+        life = null;
+        setLife = null;
+        lifeMax = null;
+        deads = null;
+        score = null;
+        gameOver = null;
+    }
 }
