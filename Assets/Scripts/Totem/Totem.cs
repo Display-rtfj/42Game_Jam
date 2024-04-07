@@ -1,3 +1,4 @@
+using System;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -8,6 +9,8 @@ public class Totem : MonoBehaviour, IAcion
     private Light2D light2D;
     public float startTime = -1f;
     private Color color;
+    public GameObject border;
+    public static Action tokenAcive;
 
     // Function to check if x seconds have passed since last checked time
     bool HasTimePassed(float seconds)
@@ -29,6 +32,7 @@ public class Totem : MonoBehaviour, IAcion
     {
         light2D = GetComponent<Light2D>();
         light2D.enabled = false;
+        border.SetActive(false);
     }
 
     void Update()
@@ -51,6 +55,8 @@ public class Totem : MonoBehaviour, IAcion
         Debug.Log(color);
         if (!light2D.enabled && this.color == color)
         {
+            tokenAcive.Invoke();
+            border.SetActive(true);
             light2D.color = color;
             light2D.enabled = true;
         }

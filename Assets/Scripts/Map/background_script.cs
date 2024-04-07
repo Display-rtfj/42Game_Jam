@@ -31,6 +31,10 @@ public class background : MonoBehaviour
         playerMovement = playerInstance.GetComponent<PlayerMovement>();
         playerMovement.Ilumination = myLight;
         reduceCoroutine = StartCoroutine(ReduceOuterRadiusOverTime());
+        Totem.tokenAcive += () =>
+        {
+            RestartCoroutine(light2DComponent.pointLightOuterRadius + 5f);
+        };
 
     }
 
