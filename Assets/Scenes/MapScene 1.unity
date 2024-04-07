@@ -191,11 +191,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &737193535 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5776386903835991559, guid: 10f7777731f624d1c87c4f27395c474c, type: 3}
-  m_PrefabInstance: {fileID: 733563789383011649}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1099931326
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,11 +328,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!1 &1795375401 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 839506406519658233, guid: 10f7777731f624d1c87c4f27395c474c, type: 3}
-  m_PrefabInstance: {fileID: 733563789383011649}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &733563789383011649
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -346,25 +336,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 728927777711823313, guid: 10f7777731f624d1c87c4f27395c474c, type: 3}
-      propertyPath: menuPause
-      value: 
-      objectReference: {fileID: 1795375401}
-    - target: {fileID: 728927777711823313, guid: 10f7777731f624d1c87c4f27395c474c, type: 3}
-      propertyPath: menuGameOver
-      value: 
-      objectReference: {fileID: 737193535}
     - target: {fileID: 985315526781323698, guid: 10f7777731f624d1c87c4f27395c474c, type: 3}
       propertyPath: m_Name
       value: MenuGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499483486492914029, guid: 10f7777731f624d1c87c4f27395c474c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4959759147468476934, guid: 10f7777731f624d1c87c4f27395c474c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 6070761274193899815, guid: 10f7777731f624d1c87c4f27395c474c, type: 3}
       propertyPath: m_Pivot.x
@@ -445,22 +419,6 @@ PrefabInstance:
     - target: {fileID: 6070761274193899815, guid: 10f7777731f624d1c87c4f27395c474c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7731183241451450107, guid: 10f7777731f624d1c87c4f27395c474c, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 38.5796
-      objectReference: {fileID: 0}
-    - target: {fileID: 7731183241451450107, guid: 10f7777731f624d1c87c4f27395c474c, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -39.4956
-      objectReference: {fileID: 0}
-    - target: {fileID: 7731183241451450107, guid: 10f7777731f624d1c87c4f27395c474c, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.7256012
-      objectReference: {fileID: 0}
-    - target: {fileID: 7731183241451450107, guid: 10f7777731f624d1c87c4f27395c474c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
