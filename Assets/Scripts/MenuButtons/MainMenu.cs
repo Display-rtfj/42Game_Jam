@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
     private bool        displayScore = false;
 
     public void PlayGame() {
-        SceneManager.LoadScene("MapScene");
+        SceneManager.LoadScene(1);
     }
 
     public void ToggleScores()

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
@@ -87,5 +88,13 @@ public class GameMenu : MonoBehaviour
     }
 
 
+    public void MenuMain()
+    {
+        SceneManager.LoadScene(0);
+    }
 
+    public void MenuGame()
+    {
+        SceneManager.LoadScene(1);
+    }
 }
