@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour, IAcion
     private int colorSelect = 0;
     public List<Color> colors;
     public int life = 1000;
+    public int lifeMax = 1000;
 
     public GameObject Ilumination;
 
@@ -29,6 +30,8 @@ public class PlayerMovement : MonoBehaviour, IAcion
         {
             life += value;
         };
+        GameMenu.setLife(life);
+        GameMenu.lifeMax(lifeMax);
     }
 
     void addChildrenOrbit() {
