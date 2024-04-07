@@ -128,7 +128,7 @@ MonoBehaviour:
   yInput: 0
   orbitRadius: 1
   orbitSpeed: 50
-  Light: {fileID: 8002327677448792479, guid: 0dcacef3066e17b98aca71268d9f50e2, type: 3}
+  power: {fileID: 8002327677448792479, guid: 0dcacef3066e17b98aca71268d9f50e2, type: 3}
   colors:
   - {r: 0, g: 1, b: 1, a: 1}
   - {r: 0.090113044, g: 1, b: 0, a: 1}

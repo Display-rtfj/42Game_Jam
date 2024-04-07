@@ -19,21 +19,17 @@ public class background : MonoBehaviour
 
     private UnityEngine.Rendering.Universal.Light2D light2DComponent;
 
-    public float duration = 5.0f; // Duration over which to reduce the radius
-    public float startRadius = 5.0f;
-
+    public float duration = 50.0f; // Duration over which to reduce the radius
+    public float startRadius = 50.0f;
     private Coroutine reduceCoroutine;
 
     void Start()
     {
         GameObject myLight = Instantiate(light2DGameObject, new Vector3(0, 0, 0), Quaternion.identity);
         light2DComponent = myLight.GetComponent<UnityEngine.Rendering.Universal.Light2D>();
-        GameObject playerInstance =  Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity);
+        GameObject playerInstance = Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity);
         playerMovement = playerInstance.GetComponent<PlayerMovement>();
         playerMovement.Ilumination = myLight;
-        totem.GetComponent<Totem>().playerLight = myLight;
-        totem.GetComponent<Totem>().Map = gameObject;
-        totem.GetComponent<Totem>().mapScript = this;
         reduceCoroutine = StartCoroutine(ReduceOuterRadiusOverTime());
 
     }
@@ -56,7 +52,7 @@ public class background : MonoBehaviour
         Vector3 bottomLeft = cameraPosition - new Vector3(cameraWidth, cameraHeight);
         Vector3 topRight = cameraPosition + new Vector3(cameraWidth, cameraHeight);
 
-        
+
         for (int x = (int)bottomLeft.x - 2; x < (int)topRight.x + 2; x++)
         {
             for (int y = (int)bottomLeft.y - 2; y < (int)topRight.y + 2; y++)
@@ -65,24 +61,27 @@ public class background : MonoBehaviour
                 Collider2D collider = Physics2D.OverlapCircle(position, 0.1f, LayerMask.GetMask("Background_tile"));
                 if (collider == null)
                 {
+<<<<<<< HEAD
                     if (count % 50 == 0)
+=======
+                    if (count % 100 == 0)
+>>>>>>> daefd53de9e0994d7b3cecfab04db30436d3b6dd
                         Instantiate(enemy, position, Quaternion.identity);
                     if (count % 720 == 0)
-                        Instantiate(totem, position, Quaternion.identity);
-                    GameObject newTilemap = Instantiate(tilemapGameObject, position, Quaternion.identity);
-                    newTilemap.tag = "Background_tilemap";
+                        InstantiateTotem(position);
+                    Instantiate(tilemapGameObject, position, Quaternion.identity);
                     count++;
                 }
             }
         }
         EraseObjectsOutsideSquare();
     }
-    void SpawnChance(float chance, Vector3 position)
-    {
-        chance *= 0.001f;
 
-        if (Random.value < chance)
-            Instantiate(totem, position, Quaternion.identity);
+    private void InstantiateTotem(Vector3 position)
+    {
+        int random = Random.Range(0, playerMovement.colors.Count - 1);
+        GameObject gameObject = Instantiate(totem, position, Quaternion.identity);
+        gameObject.GetComponent<Totem>()?.SetColor(playerMovement.colors[random]);
     }
 
     void EraseObjectsOutsideSquare()

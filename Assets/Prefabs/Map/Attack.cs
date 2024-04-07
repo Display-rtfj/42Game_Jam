@@ -1,31 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class attack : MonoBehaviour
 {
 
     public float            speed = 20f;
-    private Vector3         targetPosition;
+    private Color            color;
+    private Vector3         direction;
 
-    public GameObject       totemLight;
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-        {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-            return;
-        }
-        else if (other.gameObject.layer == LayerMask.NameToLayer("Totem"))
-        {
-            if(!other.GetComponent<Totem>().activated)
-                other.GetComponent<Totem>().activated = true;
-            Destroy(gameObject);
-            return;
-        }
-    }
-    private Vector3 direction;
+
     void Start()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -33,15 +18,12 @@ public class attack : MonoBehaviour
         direction = (mousePos - transform.position).normalized;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Camera mainCamera = Camera.main;
 
         if (!IsObjectVisible(mainCamera, transform.position))
             Destroy(gameObject);
-        // Vector3 direction = (targetPosition - transform.position).normalized;
-        // transform.Translate(direction * speed * Time.deltaTime, Space.World);
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
     }
 
@@ -55,5 +37,20 @@ public class attack : MonoBehaviour
                screenPosition.y >= 0 && screenPosition.y <= 1 &&
                screenPosition.z > 0; // Ensure the object is in front of the camera
     }
+
+    public Color GetColor() { return color; }
+
+    public void SetColor(Color color)
+    {
+        this.color = color;
+        GetComponent<Light2D>().color = color;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        other.GetComponent<IAcion>()?.Action(color);
+        Destroy(this.gameObject);
+    }
+
 }
 

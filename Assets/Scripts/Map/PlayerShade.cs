@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShade : MonoBehaviour
+public class PlayerShade : MonoBehaviour, IAcion
 {
     public Transform player;
     public SpriteRenderer shadeSprite;
     public float shadeRadius = 2.0f; // Adjust as needed
-    
+
+    public void Action(Color color)
+    {
+       // throw new System.NotImplementedException();
+    }
+
     void Update()
     {
         // Position the shade sprite around the player
