@@ -132,7 +132,7 @@ public class background : MonoBehaviour
 
     IEnumerator IncreaseValue()
     {
-        while (true && enemyStartSpwan > 5)
+        while (true && enemyStartSpwan > 10)
         {
             // Add increaseAmount to the value
             enemyStartSpwan -= 1;
