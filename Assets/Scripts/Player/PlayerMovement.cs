@@ -8,7 +8,7 @@ public interface IAcion
     void Action(Color color);
 }
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IAcion
 {
     public float    speed = 5.0f;
     public float    xInput;
@@ -18,12 +18,17 @@ public class PlayerMovement : MonoBehaviour
     public GameObject      power;
     private int colorSelect = 0;
     public List<Color> colors;
+    public int life = 1000;
 
     public GameObject Ilumination;
 
     void Start()
     {
         // addChildrenOrbit();
+        GameMenu.life += (value) =>
+        {
+            life += value;
+        };
     }
 
     void addChildrenOrbit() {
@@ -77,5 +82,11 @@ public class PlayerMovement : MonoBehaviour
             return;
         GameObject  gameObject = Instantiate(power, transform.position, Quaternion.identity);
         gameObject.GetComponent<attack>()?.SetColor(colors[colorSelect]);
+    }
+
+    public void Action(Color color)
+    {
+        if (color == Color.black)
+            GameMenu.life(-1);
     }
 }
