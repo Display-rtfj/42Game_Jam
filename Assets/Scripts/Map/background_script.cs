@@ -135,7 +135,7 @@ public class background : MonoBehaviour
         while (true && enemyStartSpwan > 5)
         {
             // Add increaseAmount to the value
-            enemyStartSpwan -= 5;
+            enemyStartSpwan -= 1;
 
             // Wait for the specified interval
             yield return new WaitForSeconds(1);
