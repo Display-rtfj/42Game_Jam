@@ -65,8 +65,6 @@ public class background : MonoBehaviour
                 Collider2D collider = Physics2D.OverlapCircle(position, 0.1f, LayerMask.GetMask("Background_tile"));
                 if (collider == null)
                 {
-                    if (count % 50 == 0)
-                        InstantiateTotem(position);
                     if (count % 100 == 0)
                         Instantiate(enemy, position, Quaternion.identity);
                     if (count % 720 == 0)
