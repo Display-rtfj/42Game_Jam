@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float    orbitSpeed = 50f;
     public GameObject      Light;
 
-    // private Color<Vector> colors = 
+    public List<Color> colors;
 
     public GameObject Ilumination;
 

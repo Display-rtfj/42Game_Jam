@@ -15,6 +15,8 @@ public class background : MonoBehaviour
 
     public GameObject player;
 
+    private PlayerMovement playerMovement;
+
     private UnityEngine.Rendering.Universal.Light2D light2DComponent;
 
     public float duration = 5.0f; // Duration over which to reduce the radius
@@ -27,7 +29,8 @@ public class background : MonoBehaviour
         GameObject myLight = Instantiate(light2DGameObject, new Vector3(0, 0, 0), Quaternion.identity);
         light2DComponent = myLight.GetComponent<UnityEngine.Rendering.Universal.Light2D>();
         GameObject playerInstance =  Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity);
-        playerInstance.GetComponent<PlayerMovement>().Ilumination = myLight;
+        playerMovement = playerInstance.GetComponent<PlayerMovement>();
+        playerMovement.Ilumination = myLight;
         totem.GetComponent<Totem>().playerLight = myLight;
         totem.GetComponent<Totem>().Map = gameObject;
         totem.GetComponent<Totem>().mapScript = this;
