@@ -137,10 +137,7 @@ MonoBehaviour:
   - {r: 1, g: 0.09067254, b: 0, a: 1}
   life: 1000
   lifeMax: 1000
-<<<<<<< HEAD
-=======
   lightHeader: {fileID: 3925135633488199510}
->>>>>>> d58e06a3a87efad0a51df64c74b84945d8acbe14
   Ilumination: {fileID: 7001376719151045662, guid: ef6317fa5c172ff0682bb3dd9d634153, type: 3}
 --- !u!61 &4784082726592489543
 BoxCollider2D:
