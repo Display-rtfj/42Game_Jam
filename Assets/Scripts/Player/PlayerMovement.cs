@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public float    orbitSpeed = 50f;
     public GameObject      Light;
 
+    public GameObject Ilumination;
+
     void Start()
     {
         addChildrenOrbit();
@@ -46,9 +48,10 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
         if (movementDirection != Vector3.zero)
         {
-            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, speed * Time.deltaTime);
+            // Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+            // transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, speed * Time.deltaTime);
         }
         Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
+        Ilumination.transform.position = transform.position;
     }
 }

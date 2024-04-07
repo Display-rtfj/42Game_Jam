@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class LightTravel : MonoBehaviour
 {
     public GameObject       Light;
@@ -26,8 +28,17 @@ public class LightTravel : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         SpriteRenderer otherSpriteRenderer = other.GetComponent<SpriteRenderer>();
-        Color color = otherSpriteRenderer.color;
-        this.GetComponent<SpriteRenderer>().color = color;
+        if (other.gameObject.layer == LayerMask.NameToLayer("Background_tile"))
+            return;
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Totem"))
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+            return;
+        }
+        Color color = otherSpriteRenderer.color;   
+        // this.GetComponent<SpriteRenderer>().color = color;
+        this.GetComponent<Light>().color = color;
         // this.GetComponent<halo>().color = color;
         trailRenderer.startColor = color;
         trailRenderer.endColor = color;
