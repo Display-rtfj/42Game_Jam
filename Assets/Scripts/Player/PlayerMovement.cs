@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public interface IAcion
+{
+    void Action(Color color);
+}
+
 public class PlayerMovement : MonoBehaviour
 {
     public float    speed = 5.0f;
@@ -9,8 +15,8 @@ public class PlayerMovement : MonoBehaviour
     public float    yInput;
     public float    orbitRadius = 1;
     public float    orbitSpeed = 50f;
-    public GameObject      Light;
-
+    public GameObject      power;
+    private int colorSelect = 0;
     public List<Color> colors;
 
     public GameObject Ilumination;
@@ -39,9 +45,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetMouseButtonDown(0) && Light)
-            Instantiate(Light, transform.position, Quaternion.identity);
-        xInput = Input.GetAxis("Horizontal");
+        if (Input.GetMouseButtonDown(0) && power)
+            InstantiatePower();
+         xInput = Input.GetAxis("Horizontal");
         yInput = Input.GetAxis("Vertical");
 
         Vector3 movementDirection = new Vector3(xInput, yInput, 0);
@@ -54,8 +60,22 @@ public class PlayerMovement : MonoBehaviour
         //     // transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, speed * Time.deltaTime);
         // }
         Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
-        if (Input.GetKeyDown(KeyCode.Space))
-            Ilumination.GetComponent<UnityEngine.Rendering.Universal.Light2D>().color = Color.red;
         Ilumination.transform.position = transform.position;
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            colorSelect++;
+            if (colorSelect >= colors.Count)
+                colorSelect = 0;
+        }
+    }
+
+
+    private void InstantiatePower()
+    {
+        if (!power)
+            return;
+        GameObject  gameObject = Instantiate(power, transform.position, Quaternion.identity);
+        gameObject.GetComponent<attack>()?.SetColor(colors[colorSelect]);
     }
 }

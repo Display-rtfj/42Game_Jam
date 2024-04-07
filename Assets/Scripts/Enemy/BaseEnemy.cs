@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseEnemy : MonoBehaviour
+public class BaseEnemy : MonoBehaviour, IAcion
 {
     public EnemyData data;
     private GameObject target;
@@ -28,5 +28,11 @@ public class BaseEnemy : MonoBehaviour
             var direction = target.transform.position - transform.position;
             transform.position += direction.normalized * data.speed * Time.deltaTime;
         }
+    }
+
+    public void Action(Color color)
+    {
+        //throw new System.NotImplementedException();
+        Destroy(gameObject);
     }
 }

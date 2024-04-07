@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -7380012739569888485}
   - component: {fileID: -7425397998432423637}
   - component: {fileID: 8336588856239865323}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LightPower
   m_TagString: attack
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1601
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -133,7 +133,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  totemLight: {fileID: 1015655388048556782, guid: 4c46846342b256466a493927303df036, type: 3}
 --- !u!50 &8336588856239865323
 Rigidbody2D:
   serializedVersion: 4
