@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1888111378609369898}
   m_Layer: 6
   m_Name: Tilemap_35
-  m_TagString: Untagged
+  m_TagString: Background_tilemap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1920
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
