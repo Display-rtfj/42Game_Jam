@@ -24,6 +24,7 @@ public class background : MonoBehaviour
 
     public float enemyStartSpwan = 150.0f;
     private Coroutine reduceCoroutine;
+    public float startRadiusNow = 100;
 
     void Start()
     {
@@ -46,6 +47,8 @@ public class background : MonoBehaviour
         PaintTilesUntilCameraEdges();
         if (reduceCoroutine == null)
             light2DComponent.pointLightOuterRadius = startRadius;
+        if (startRadiusNow <= 0)
+            GameMenu.gameOver.Invoke();
     }
 
     static int count;
@@ -116,13 +119,12 @@ public class background : MonoBehaviour
     {
         float timer = 0.0f;
         float startRadius = light2DComponent.pointLightOuterRadius > 30 ? 30 : light2DComponent.pointLightOuterRadius;
-        if (startRadius <= 0)
-            GameMenu.gameOver.Invoke();
         while (timer < duration)
         {
             timer += Time.deltaTime;
             float t = timer / duration; // Calculate the progress as a fraction of the duration
             light2DComponent.pointLightOuterRadius = Mathf.Lerp(startRadius, 0f, t); // Interpolate between startRadius and 0 over time
+            startRadiusNow = light2DComponent.pointLightOuterRadius;
             yield return null; // Wait for the next frame
         }
 
