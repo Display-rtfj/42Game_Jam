@@ -448,6 +448,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8707137148207188274, guid: bfa4df0d24ae881f083ac874865ad639, type: 3}
+      propertyPath: startRadiusNow
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8707137148207188274, guid: bfa4df0d24ae881f083ac874865ad639, type: 3}
       propertyPath: light2DComponent
       value: 
       objectReference: {fileID: 3257353381129210096, guid: ef6317fa5c172ff0682bb3dd9d634153, type: 3}
