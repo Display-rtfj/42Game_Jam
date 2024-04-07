@@ -13,6 +13,7 @@ public class GameMenu : MonoBehaviour
     public static Action<int> setLife;
     public static Action<int> lifeMax;
     public static Action<int> deads;
+    public static Action gameOver;
     public static Action<int> score;
     public TextMeshProUGUI textDeads;
     public TextMeshProUGUI textScore;
@@ -39,6 +40,12 @@ public class GameMenu : MonoBehaviour
             value_life = value;
         };
         Time.timeScale = 1f;
+        gameOver += () =>
+        {
+            Time.timeScale = 0f;
+            menuPause.SetActive(false);
+            menuGameOver.SetActive(true);
+        };
     }
 
     // Update is called once per frame
