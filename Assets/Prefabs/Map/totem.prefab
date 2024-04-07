@@ -137,6 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activated: 0
   startTime: -1
+  border: {fileID: 4301880176121651478}
 --- !u!114 &7410470402616080107
 MonoBehaviour:
   m_ObjectHideFlags: 0
