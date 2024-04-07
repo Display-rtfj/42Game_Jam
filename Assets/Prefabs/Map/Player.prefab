@@ -139,6 +139,7 @@ MonoBehaviour:
   lifeMax: 1000
   lightHeader: {fileID: 3925135633488199510}
   Ilumination: {fileID: 7001376719151045662, guid: ef6317fa5c172ff0682bb3dd9d634153, type: 3}
+  audioClip: {fileID: 8300000, guid: 7c17358422f58be4ab310c035c10eb77, type: 3}
 --- !u!61 &4784082726592489543
 BoxCollider2D:
   m_ObjectHideFlags: 0

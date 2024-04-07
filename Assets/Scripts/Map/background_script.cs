@@ -21,6 +21,8 @@ public class background : MonoBehaviour
 
     public float duration = 50.0f; // Duration over which to reduce the radius
     public float startRadius = 50.0f;
+
+    public float enemyStartSpwan = 150.0f;
     private Coroutine reduceCoroutine;
 
     void Start()
@@ -31,6 +33,7 @@ public class background : MonoBehaviour
         playerMovement = playerInstance.GetComponent<PlayerMovement>();
         playerMovement.Ilumination = myLight;
         reduceCoroutine = StartCoroutine(ReduceOuterRadiusOverTime());
+        StartCoroutine(IncreaseValue());
         Totem.tokenAcive += () =>
         {
             RestartCoroutine(light2DComponent.pointLightOuterRadius + 5f);
@@ -65,7 +68,7 @@ public class background : MonoBehaviour
                 Collider2D collider = Physics2D.OverlapCircle(position, 0.1f, LayerMask.GetMask("Background_tile"));
                 if (collider == null)
                 {
-                    if (count % 100 == 0)
+                    if (count % enemyStartSpwan == 0)
                         Instantiate(enemy, position, Quaternion.identity);
                     if (count % 720 == 0)
                         InstantiateTotem(position);
@@ -124,6 +127,18 @@ public class background : MonoBehaviour
 
         // Ensure the radius is exactly 0 at the end
         light2DComponent.pointLightOuterRadius = 0f;
+    }
+
+    IEnumerator IncreaseValue()
+    {
+        while (true && enemyStartSpwan > 5)
+        {
+            // Add increaseAmount to the value
+            enemyStartSpwan -= 5;
+
+            // Wait for the specified interval
+            yield return new WaitForSeconds(1);
+        }
     }
 
     public void RestartCoroutine(float newValue)
