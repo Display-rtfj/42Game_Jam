@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 509760dc0cf45afef8ecb981cda248aa
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - totemLight: {fileID: 1015655388048556782, guid: 4c46846342b256466a493927303df036, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

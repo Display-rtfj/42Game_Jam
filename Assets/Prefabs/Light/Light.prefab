@@ -270,7 +270,6 @@ MonoBehaviour:
   Light: {fileID: 2511173190625145813}
   trailRenderer: {fileID: 4706605651544146176}
   speed: 20
-  light2DObject: {fileID: 8002327677448792479, guid: 7b337bdd173acb72bb78155d7dea6c1a, type: 3}
 --- !u!122 &2925524261182087308
 Halo:
   m_ObjectHideFlags: 0

@@ -9,20 +9,37 @@ public class background : MonoBehaviour
 {
     public GameObject tilemapGameObject;
     public GameObject totem;
+    public GameObject enemy;
 
-    public UnityEngine.Rendering.Universal.Light2D light2DComponent;
+    public GameObject light2DGameObject;
+
+    public GameObject player;
+
+    private UnityEngine.Rendering.Universal.Light2D light2DComponent;
 
     public float duration = 5.0f; // Duration over which to reduce the radius
     public float startRadius = 5.0f;
 
+    private Coroutine reduceCoroutine;
+
     void Start()
     {
-        StartCoroutine(ReduceOuterRadiusOverTime());
+        GameObject myLight = Instantiate(light2DGameObject, new Vector3(0, 0, 0), Quaternion.identity);
+        light2DComponent = myLight.GetComponent<UnityEngine.Rendering.Universal.Light2D>();
+        GameObject playerInstance =  Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity);
+        playerInstance.GetComponent<PlayerMovement>().Ilumination = myLight;
+        totem.GetComponent<Totem>().playerLight = myLight;
+        totem.GetComponent<Totem>().Map = gameObject;
+        totem.GetComponent<Totem>().mapScript = this;
+        reduceCoroutine = StartCoroutine(ReduceOuterRadiusOverTime());
+
     }
 
     void Update()
     {
         PaintTilesUntilCameraEdges();
+        if (reduceCoroutine == null)
+            light2DComponent.pointLightOuterRadius = startRadius;
     }
 
     static int count;
@@ -45,6 +62,8 @@ public class background : MonoBehaviour
                 Collider2D collider = Physics2D.OverlapCircle(position, 0.1f, LayerMask.GetMask("Background_tile"));
                 if (collider == null)
                 {
+                    if (count % 50 == 0)
+                        Instantiate(enemy, position, Quaternion.identity);
                     if (count % 720 == 0)
                         Instantiate(totem, position, Quaternion.identity);
                     GameObject newTilemap = Instantiate(tilemapGameObject, position, Quaternion.identity);
@@ -91,7 +110,7 @@ public class background : MonoBehaviour
     private IEnumerator ReduceOuterRadiusOverTime()
     {
         float timer = 0.0f;
-        float originalRadius = light2DComponent.pointLightOuterRadius;
+        float startRadius = light2DComponent.pointLightOuterRadius > 30 ? 30 : light2DComponent.pointLightOuterRadius;
 
         while (timer < duration)
         {
@@ -105,4 +124,11 @@ public class background : MonoBehaviour
         light2DComponent.pointLightOuterRadius = 0f;
     }
 
+    public void RestartCoroutine(float newValue)
+    {
+        if (reduceCoroutine != null)
+            StopCoroutine(reduceCoroutine);
+        light2DComponent.pointLightOuterRadius = newValue;
+        reduceCoroutine = StartCoroutine(ReduceOuterRadiusOverTime());
+    }
 }

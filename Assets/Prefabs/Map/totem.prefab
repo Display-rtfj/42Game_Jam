@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6519673862355302784}
   - component: {fileID: 893893686329670994}
   - component: {fileID: 3202464664735406117}
+  - component: {fileID: -7888008100704311633}
   m_Layer: 7
   m_Name: totem
   m_TagString: Totem
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -5
   m_Sprite: {fileID: 21300000, guid: b69fa494e2a6a260ea8f8a78fa099096, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9433962, g: 0.11124954, b: 0.11124954, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -120,3 +121,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &-7888008100704311633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479760471687627784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f78041f64d5c4631ba6febcb727aded0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activated: 0
+  totemLight: {fileID: 1015655388048556782, guid: 4c46846342b256466a493927303df036, type: 3}

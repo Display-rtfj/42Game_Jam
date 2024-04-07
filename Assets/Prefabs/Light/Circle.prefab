@@ -266,6 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f8182997b31ce4d87235b2cc3c7b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Light: {fileID: 2511173190625145813, guid: 540c5f9d31b40264d8729f43d0b9232c, type: 3}
   trailRenderer: {fileID: 0}
-  launchDistance: 5
   speed: 10
+  Map: {fileID: 0}

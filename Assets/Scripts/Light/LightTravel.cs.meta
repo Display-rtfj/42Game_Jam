@@ -4,7 +4,9 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - trailRenderer: {fileID: 4706605651544146176, guid: 3f34efebf70bc504794b8df29abea4b5, type: 3}
+  - Light: {fileID: 2511173190625145813, guid: 540c5f9d31b40264d8729f43d0b9232c, type: 3}
+  - trailRenderer: {instanceID: 0}
+  - Map: {fileID: 8285614162451784898, guid: bfa4df0d24ae881f083ac874865ad639, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

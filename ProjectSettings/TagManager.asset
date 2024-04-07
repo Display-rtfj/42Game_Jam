@@ -8,6 +8,7 @@ TagManager:
   - Totem
   - Map
   - Background_tilemap
+  - attack
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - UI
   - Background_tile
   - Totem
-  - 
+  - Enemy
   - 
   - 
   - 

@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 
 public class LightTravel : MonoBehaviour
 {
     public GameObject       Light;
     public TrailRenderer    trailRenderer;
-    public float            speed = 20f;
+    public float            speed = 20f;    
     private Vector3         targetPosition;
+
 
     void Start() {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -31,6 +32,14 @@ public class LightTravel : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Background_tile"))
             return;
         else if (other.gameObject.layer == LayerMask.NameToLayer("Totem"))
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+            GameObject lightobj = GameObject.Find("Light 2D");
+            lightobj.GetComponent<UnityEngine.Rendering.Universal.Light2D>().pointLightOuterRadius += 5f;
+            return;
+        }
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             Destroy(other.gameObject);
             Destroy(gameObject);

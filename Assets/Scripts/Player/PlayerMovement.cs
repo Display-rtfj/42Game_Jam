@@ -11,11 +11,13 @@ public class PlayerMovement : MonoBehaviour
     public float    orbitSpeed = 50f;
     public GameObject      Light;
 
+    // private Color<Vector> colors = 
+
     public GameObject Ilumination;
 
     void Start()
     {
-        addChildrenOrbit();
+        // addChildrenOrbit();
     }
 
     void addChildrenOrbit() {
@@ -46,12 +48,14 @@ public class PlayerMovement : MonoBehaviour
 
         movementDirection.Normalize();
         transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
-        if (movementDirection != Vector3.zero)
-        {
-            // Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-            // transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, speed * Time.deltaTime);
-        }
+        // if (movementDirection != Vector3.zero)
+        // {
+        //     // Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+        //     // transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, speed * Time.deltaTime);
+        // }
         Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
+        if (Input.GetKeyDown(KeyCode.Space))
+            Ilumination.GetComponent<UnityEngine.Rendering.Universal.Light2D>().color = Color.red;
         Ilumination.transform.position = transform.position;
     }
 }
