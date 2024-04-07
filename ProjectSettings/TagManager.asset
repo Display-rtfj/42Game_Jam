@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Background
+  - Totem
+  - Map
+  - Background_tilemap
+  - attack
   layers:
   - Default
   - TransparentFX
@@ -11,9 +16,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Background_tile
+  - Totem
+  - Enemy
   - 
   - 
   - 
@@ -38,6 +43,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background_tile
+    uniqueID: 394326239
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
