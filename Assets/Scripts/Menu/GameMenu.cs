@@ -113,5 +113,6 @@ public class GameMenu : MonoBehaviour
         deads = null;
         score = null;
         gameOver = null;
+        Totem.tokenAcive = null;
     }
 }
